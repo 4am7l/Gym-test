@@ -1,12 +1,9 @@
 <div align="center">
 
-<img src="./public/gym-logo.svg" alt="Samara Gym" width="120">
-
-# 🏋️ Samara Gym
+# 🏋️ Gym Test
 ### Gym Membership & Operations Management
 
-[![Live App](https://img.shields.io/badge/Live_App-Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://gym-backup2.pages.dev/)
-[![GitHub](https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/4am7l/gym-backup2)
+[![GitHub](https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/4am7l/Gym-test)
 
 **An Arabic-first, mobile-friendly system for managing gym members, subscriptions, payments, and attendance.**
 
@@ -16,9 +13,9 @@
 
 ## Overview
 
-Samara Gym helps gym staff manage daily operations in one place. It includes an administrator dashboard and a separate member portal, with cloud-hosted APIs and persistent membership records.
+Gym Test helps gym staff manage daily operations in one place. It includes an administrator dashboard and a separate member portal, with cloud-hosted APIs and persistent membership records.
 
-**Live website:** https://gym-backup2.pages.dev/
+**Deployment:** Configure an independent Cloudflare Pages project for this test repository.
 
 ## Features
 
@@ -70,7 +67,7 @@ Browser / Installed Web App
 ## Repository Layout
 
 ```text
-gym-backup2/
+Gym-test/
 ├── public/
 │   ├── index.html
 │   ├── app.js
@@ -79,7 +76,6 @@ gym-backup2/
 │   ├── payment-config.json
 │   ├── manifest.webmanifest
 │   ├── sw.js
-│   └── gym-logo.svg
 ├── functions/
 │   ├── api/
 │   └── lib/
@@ -95,7 +91,7 @@ gym-backup2/
 
 ## Deployment
 
-The live application is deployed from GitHub to Cloudflare Pages. Pushing a commit to the connected branch triggers a new deployment.
+This test application can be deployed independently from GitHub to Cloudflare Pages. Pushing a commit to the connected branch triggers a new deployment.
 
 For a new Cloudflare deployment:
 1. Connect this GitHub repository to a Cloudflare Pages project.
@@ -120,7 +116,7 @@ Built and maintained by [4am7l](https://github.com/4am7l).
 
 <div align="center">
 
-**Samara Gym — Train Hard. Manage Smart.**
+**Gym Test — Train Hard. Manage Smart.**
 
 Made in Jordan 🇯🇴
 
