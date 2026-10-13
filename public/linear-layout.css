@@ -1,0 +1,274 @@
+/* Linear-inspired structural redesign: flat surfaces, compact navigation, responsive workspace. */
+:root[data-theme="dark"]{--bg-dark:#0f1012;--bg-gradient:none;--panel-glass:#151619;--card-glass:#191a1e;--card-glass-hover:#232429;--border-glass:#292b31;--border-glow:#373941;--inner-box-bg:#111215;--text-bright:#e8e9ec;--text-sub:#a1a3ac;--text-dim:#747782;--accent-neon:#8b87f8;--btn-liquid-bg:#6c67d9;--dropdown-bg:#1a1b20}
+:root[data-theme="light"]{--bg-dark:#f8f8fa;--bg-gradient:none;--panel-glass:#fff;--card-glass:#fff;--card-glass-hover:#f1f1f5;--border-glass:#e5e5eb;--border-glow:#d8d8e0;--accent-neon:#5954c9;--btn-liquid-bg:#6761d4}
+body{background:var(--bg-dark)!important}
+body.is-admin .app-viewport{max-width:none!important;width:100%;height:100dvh;overflow:hidden}
+body.is-admin .main-header{height:58px;min-height:58px;background:var(--panel-glass);border-bottom:1px solid var(--border-glass);box-shadow:none;padding-inline:22px}
+body.is-admin .main-header .brand-icon{width:31px;height:31px;border-radius:9px}
+body.is-admin .main-header .brand-title h1{font-size:1rem;text-transform:uppercase}
+body.is-admin .main-header .brand-title p{font-size:.72rem}
+body.is-admin .dashboard-layout{display:grid;grid-template-columns:238px minmax(0,1fr);height:calc(100dvh - 58px);min-height:0;gap:0}
+body.is-admin aside.sidebar{width:238px!important;min-width:0!important;height:100%;display:flex;flex-direction:column;gap:3px;padding:22px 11px;border-inline-end:1px solid var(--border-glass);background:var(--panel-glass);border-radius:0;overflow-y:auto}
+body.is-admin aside.sidebar:before{content:"WORKSPACE";font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--text-dim);padding:0 12px 12px}
+body.is-admin .nav-link{min-height:39px;display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:7px;font-size:.86rem;font-weight:500;transition:background .12s,color .12s}
+body.is-admin .nav-link.active{background:rgba(139,135,248,.13);color:var(--accent-neon);border:0;box-shadow:none}
+body.is-admin .nav-link i{font-size:14px;width:19px}
+body.is-admin .payment-side-box{margin-top:auto}
+body.is-admin .content-area{min-width:0;min-height:0;width:100%;height:100%;padding:28px clamp(18px,3vw,48px) 48px;overflow:auto;background:var(--bg-dark)}
+body.is-admin .section-view{max-width:1450px;margin-inline:auto}
+body.is-admin .panel-header{padding-bottom:15px;margin-bottom:20px;border-bottom:1px solid var(--border-glass)}
+body.is-admin .panel-header h2{font-size:1.05rem;font-weight:700}
+body.is-admin .data-panel,body.is-admin .glass-card,body.is-admin .stat-card{background:var(--card-glass);border:1px solid var(--border-glass);border-radius:10px;box-shadow:none;backdrop-filter:none}
+body.is-admin .stat-card{padding:20px;min-height:115px}
+body.is-admin .stat-card:after{display:none}
+body.is-admin .stat-card:hover,body.is-admin .glass-card:hover{transform:none;box-shadow:none;border-color:var(--border-glow)}
+body.is-admin .gym-ops-bar{border-radius:9px;background:var(--panel-glass)}
+body.is-admin .gym-table-wrap{border-radius:10px;background:var(--panel-glass)}
+body.is-admin .gym-table thead{background:var(--card-glass-hover)}
+body.is-admin .gym-table tbody tr:hover{background:var(--card-glass-hover)}
+body.is-admin .btn-liquid{background:var(--btn-liquid-bg)!important;color:white!important;border:1px solid transparent!important;border-radius:8px;box-shadow:none;font-weight:700}
+body.is-admin .btn-liquid:hover{filter:brightness(1.1);box-shadow:none}
+body.is-admin .modal-glass-box{border-radius:14px;background:var(--panel-glass);box-shadow:0 25px 75px #0006}
+body.is-admin .main-header .logout-btn{border-radius:8px}
+body.is-admin .linear-workspace-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--border-glass)}
+body.is-admin .linear-workspace-heading h2{font-size:1.35rem;font-weight:800}
+body.is-admin .linear-workspace-heading p{font-size:.78rem;color:var(--text-sub);margin-top:5px}
+@media(max-width:767px){
+ body.is-admin .app-viewport{height:100dvh}
+ body.is-admin .main-header{height:54px;min-height:54px;padding-inline:12px}
+ body.is-admin .dashboard-layout{display:block;height:calc(100dvh - 54px);padding-bottom:65px}
+ body.is-admin .content-area{height:100%;padding:18px 12px 96px}
+ body.is-admin aside.sidebar{position:fixed!important;inset:auto 0 0!important;width:100%!important;height:64px!important;min-height:64px!important;z-index:1200;display:flex!important;flex-direction:row;align-items:stretch;justify-content:space-around;gap:0;padding:5px 4px calc(5px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--border-glass);border-inline-end:0;overflow:visible;background:var(--panel-glass)}
+ body.is-admin aside.sidebar:before,body.is-admin aside.sidebar .payment-side-box{display:none!important}
+ body.is-admin aside.sidebar .nav-link{flex:1;min-width:0;min-height:48px;padding:4px 2px;display:flex;flex-direction:column;justify-content:center;gap:3px;text-align:center;font-size:10px;line-height:1.15;border-radius:6px}
+ body.is-admin aside.sidebar .nav-link i{font-size:17px;width:auto}
+ body.is-admin aside.sidebar .nav-badge{position:absolute;top:0;inset-inline-end:5px;font-size:9px}
+ body.is-admin .linear-workspace-heading{margin-bottom:15px}
+ body.is-admin .linear-workspace-heading h2{font-size:1.12rem}
+ body.is-admin .stat-card{padding:14px;min-height:100px}
+ body.is-admin .gym-ops-bar{padding:10px}
+ body.is-admin .main-header .brand-title p{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Layout conflict fixes: old responsive rules begin at 900px, not 767px. */
+body.is-admin .app-viewport{padding:0!important;gap:0!important;overflow:hidden!important}
+body.is-admin .main-header{border:0;border-radius:0;flex-shrink:0}
+body.is-admin #admin-portal-view{display:grid!important;min-height:0}
+body.is-admin .content-area{display:block;overscroll-behavior:contain}
+body.is-admin .content-area .section-view:not(.active){display:none}
+body.is-admin .content-area .section-view.active{display:block}
+body.is-admin .stats-row{grid-template-columns:repeat(4,minmax(0,1fr))}
+body.is-admin .dashboard-layout .sidebar .nav-link{cursor:pointer;user-select:none}
+body.is-admin .dashboard-layout .sidebar .nav-link:focus-visible{outline:2px solid var(--accent-neon);outline-offset:-2px}
+body.is-admin .glass-card,body.is-admin .stat-card,body.is-admin .data-panel{min-width:0}
+body.is-admin .gym-table-wrap{max-width:100%;overflow-x:auto}
+body.is-admin .main-header .header-controls{min-width:0}
+@media(min-width:901px){
+ body.is-admin .dashboard-layout{grid-template-columns:238px minmax(0,1fr)!important}
+ body.is-admin aside.sidebar{position:relative!important;inset:auto!important;width:238px!important;height:100%!important;overflow-y:auto}
+}
+@media(max-width:900px){
+ body.is-admin .app-viewport{height:100dvh!important;padding:0!important}
+ body.is-admin .dashboard-layout{display:block!important;height:calc(100dvh - 58px)!important;overflow:hidden}
+ body.is-admin .content-area{height:100%!important;overflow:auto!important;padding:18px 14px calc(100px + env(safe-area-inset-bottom,0px))!important}
+ body.is-admin aside.sidebar{position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:0!important;display:flex!important;flex-direction:row!important;width:100%!important;min-width:0!important;height:calc(65px + env(safe-area-inset-bottom,0px))!important;min-height:0!important;padding:5px 4px calc(5px + env(safe-area-inset-bottom,0px))!important;border-radius:0!important;overflow:visible!important;z-index:1200}
+ body.is-admin aside.sidebar .nav-link{flex:1!important;min-width:0!important;flex-direction:column!important;gap:3px!important;align-items:center!important;justify-content:center!important;padding:5px 2px!important;font-size:10px!important}
+ body.is-admin aside.sidebar .nav-link span:not(.nav-badge){white-space:nowrap}
+ body.is-admin aside.sidebar:before,body.is-admin aside.sidebar .payment-side-box{display:none!important}
+ body.is-admin .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:420px){
+ body.is-admin .header-controls{gap:5px}
+ body.is-admin .main-header .brand-title p{display:none}
+ body.is-admin .main-header .logout-btn{font-size:0;gap:0}
+ body.is-admin .main-header .logout-btn i{font-size:15px}
+ body.is-admin .stats-row{gap:8px}
+}
+
+/* Motion: Animate.css library is loaded for opt-in animation classes; interaction effects remain lightweight. */
+@media(prefers-reduced-motion:no-preference){
+ body.is-admin .nav-link{transition:background-color .14s ease,color .14s ease,transform .14s ease!important}
+ body.is-admin .nav-link:active{transform:scale(.97)}
+ body.is-admin .btn-liquid,body.is-admin .gym-ops-bar button{transition:filter .16s ease,transform .16s ease!important}
+ body.is-admin .btn-liquid:active,body.is-admin .gym-ops-bar button:active{transform:scale(.98)}
+ body.is-admin .modal-backdrop:not([style*="display: none"]):not(.hidden) .modal-glass-box{animation:linear-dialog-enter .2s cubic-bezier(.2,.8,.2,1) both}
+ @keyframes linear-dialog-enter{from{opacity:.65;transform:translateY(10px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+}
+@media(prefers-reduced-motion:reduce){body.is-admin .modal-glass-box{animation:none!important}}
+
+/* Center mobile bottom navigation items in both RTL and LTR. */
+@media(max-width:900px){
+ body.is-admin aside.sidebar{direction:rtl;align-items:center!important;justify-content:space-evenly!important}
+ body.is-admin aside.sidebar .nav-link{box-sizing:border-box;display:flex!important;flex:1 1 0!important;width:0!important;max-width:none!important;min-width:0!important;margin:0!important;align-self:stretch!important;align-items:center!important;justify-content:center!important;text-align:center!important;transform:none}
+ body.is-admin aside.sidebar .nav-link>i,body.is-admin aside.sidebar .nav-link>span:not(.nav-badge){display:block!important;flex:none!important;width:100%!important;max-width:100%!important;text-align:center!important;margin:0!important;padding:0!important}
+ body.is-admin aside.sidebar .nav-link>i{line-height:20px}
+ body.is-admin aside.sidebar .nav-link .nav-badge{position:absolute;inset-inline-end:2px;top:1px}
+}
+
+/* Critical: #admin-portal-view ID selector previously forced desktop grid on mobile,
+   leaving an invisible 238px column and squeezing all dashboard content to the right. */
+@media(max-width:900px){
+ body.is-admin #admin-portal-view{
+   display:block!important;
+   grid-template-columns:none!important;
+   width:100%!important;
+   max-width:100%!important;
+   min-width:0!important;
+   margin:0!important;
+ }
+ body.is-admin #admin-portal-view>.content-area{
+   display:block!important;
+   width:100%!important;
+   max-width:100%!important;
+   min-width:0!important;
+   box-sizing:border-box!important;
+   margin:0!important;
+ }
+ body.is-admin #admin-portal-view>.content-area>.section-view{
+   width:100%!important;
+   max-width:100%!important;
+   min-width:0!important;
+   box-sizing:border-box!important;
+ }
+ body.is-admin #view-dashboard .stats-row{width:100%!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.is-admin #view-dashboard .glass-card{min-width:0!important;overflow:hidden}
+ body.is-admin #view-dashboard .card-value,body.is-admin #view-dashboard .card-label{overflow-wrap:anywhere}
+}
+
+/* Organized members, plans and sidebar tools */
+body.is-admin .gym-sidebar-tools{display:grid;gap:5px;padding:16px 0;margin-top:12px;border-top:1px solid var(--border-glass)}
+body.is-admin .gym-sidebar-caption{padding:0 12px 8px;color:var(--text-dim);font-size:10px;font-weight:800}
+body.is-admin .gym-sidebar-tools button,body.is-admin .gym-export-menu summary{display:flex;align-items:center;gap:10px;width:100%;background:transparent;color:var(--text-sub);border:0;padding:11px 12px;border-radius:7px;font:inherit;font-size:13px;text-align:start;cursor:pointer}
+body.is-admin .gym-sidebar-tools button:hover,body.is-admin .gym-export-menu summary:hover{background:var(--card-glass-hover);color:var(--text-bright)}
+body.is-admin .gym-export-menu summary{list-style:none}
+body.is-admin .gym-export-menu summary::-webkit-details-marker{display:none}
+body.is-admin .gym-export-menu summary i:last-child{margin-inline-start:auto;font-size:10px}
+body.is-admin .gym-export-options{padding-inline-start:18px}
+body.is-admin .gym-members-controls{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 18px;padding:12px;border:1px solid var(--border-glass);border-radius:9px;background:var(--panel-glass)}
+body.is-admin .gym-members-controls label{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-sub)}
+body.is-admin .gym-members-controls select{min-height:35px;background:var(--card-glass);color:var(--text-bright);border:1px solid var(--border-glass);border-radius:7px;padding:6px 10px;min-width:135px}
+body.is-admin #view-members .gym-ops-bar{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:12px;border:1px solid var(--border-glass);background:var(--panel-glass);border-radius:8px}
+body.is-admin #view-members .gym-ops-bar button{margin-inline-start:auto}
+body.is-admin #view-members .gym-ops-bar button:disabled{opacity:.4;cursor:not-allowed}
+body.is-admin #all-members-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:12px}
+body.is-admin #all-members-list .gym-member-card{border-radius:10px;padding:15px;gap:12px;min-width:0}
+body.is-admin #all-members-list .gym-member-select{font-size:12px;color:var(--text-sub);padding-bottom:9px;border-bottom:1px solid var(--border-glass)}
+body.is-admin #all-members-list .gym-member-select label{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+body.is-admin #all-members-list .details-box-inner{border-radius:7px}
+body.is-admin #all-members-list .card-bottom-actions{justify-content:flex-end}
+body.is-admin .gym-plans-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+body.is-admin .gym-plans-grid .item-card-glass{min-height:160px;border-radius:10px;padding:20px;justify-content:space-between;gap:18px}
+body.is-admin .gym-plans-grid .item-name{font-size:1.06rem;margin-bottom:9px}
+body.is-admin .gym-plans-grid .card-bottom-actions{border-top:1px solid var(--border-glass);padding-top:12px;justify-content:flex-end}
+@media(max-width:900px){
+ body.is-admin .gym-sidebar-tools{position:fixed;bottom:calc(66px + env(safe-area-inset-bottom,0px));inset-inline:10px;z-index:1199;display:flex;gap:5px;padding:6px;background:var(--panel-glass);border:1px solid var(--border-glass);border-radius:9px;box-shadow:0 8px 25px #0006}
+ body.is-admin .gym-sidebar-caption{display:none}
+ body.is-admin .gym-sidebar-tools>button,body.is-admin .gym-sidebar-tools>details{flex:1;min-width:0}
+ body.is-admin .gym-sidebar-tools button,body.is-admin .gym-export-menu summary{justify-content:center;font-size:11px;padding:7px 5px;white-space:nowrap}
+ body.is-admin .gym-export-menu{position:relative}
+ body.is-admin .gym-export-options{position:absolute;bottom:100%;inset-inline-start:0;width:180px;padding:7px;background:var(--panel-glass);border:1px solid var(--border-glass);border-radius:9px}
+ body.is-admin .gym-members-controls{padding:10px;gap:8px}
+ body.is-admin .gym-members-controls label{flex:1 1 140px;flex-wrap:wrap}
+ body.is-admin .gym-members-controls select{width:100%;min-width:0}
+ body.is-admin #view-members .gym-ops-bar{flex-wrap:wrap}
+}
+
+/* Restore original plans appearance and remove intrusive bottom export toolbar. */
+body.is-admin .gym-plans-grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+body.is-admin .gym-plans-grid .item-card-glass{min-height:0;border-radius:var(--radius-lg);padding:14px;justify-content:initial;gap:10px}
+body.is-admin .gym-plans-grid .item-name{font-size:1rem;margin-bottom:0}
+body.is-admin .gym-plans-grid .card-bottom-actions{border-top:0;padding-top:0;justify-content:initial}
+body.is-admin .gym-mobile-tools{display:none}
+@media(max-width:900px){
+ body.is-admin .gym-sidebar-tools{display:none!important}
+ body.is-admin .gym-mobile-tools{display:block;position:relative;flex-shrink:0}
+ body.is-admin .gym-mobile-tools>button{height:34px;display:flex;align-items:center;gap:5px;border:1px solid var(--border-glass);border-radius:8px;background:var(--card-glass);color:var(--text-bright);padding:0 9px;font:inherit;font-size:12px;cursor:pointer}
+ body.is-admin .gym-mobile-tools-panel{position:absolute;z-index:2500;top:calc(100% + 8px);inset-inline-end:0;min-width:215px;max-width:min(85vw,280px);padding:8px;background:var(--panel-glass);border:1px solid var(--border-glow);border-radius:11px;box-shadow:0 15px 35px #0007}
+ body.is-admin .gym-mobile-tools-panel[hidden]{display:none!important}
+ body.is-admin .gym-mobile-tools-panel button{display:block;width:100%;text-align:start;background:none;color:var(--text-bright);border:0;border-radius:7px;padding:10px 12px;font:inherit;font-size:12px;cursor:pointer}
+ body.is-admin .gym-mobile-tools-panel button:hover{background:var(--card-glass-hover)}
+ body.is-admin .gym-mobile-tools-caption{font-size:10px;color:var(--text-dim);padding:9px 12px 4px;border-top:1px solid var(--border-glass)}
+ body.is-admin .main-header{overflow:visible;position:relative;z-index:1250}
+ body.is-admin .main-header .header-controls{gap:5px}
+ body.is-admin .gym-plans-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+}
+
+/* Theme changes animate as a single scene, rather than individual cards repainting. */
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:240ms ease-in both gym-theme-out}
+  ::view-transition-new(root){animation:300ms ease-out both gym-theme-in}
+  @keyframes gym-theme-out{from{opacity:1}to{opacity:0}}
+  @keyframes gym-theme-in{from{opacity:0}to{opacity:1}}
+  html.gym-theme-animating body,
+  html.gym-theme-animating .app-viewport,
+  html.gym-theme-animating .main-header,
+  html.gym-theme-animating .sidebar,
+  html.gym-theme-animating .content-area,
+  html.gym-theme-animating .glass-card,
+  html.gym-theme-animating .data-panel,
+  html.gym-theme-animating .item-card-glass,
+  html.gym-theme-animating button,
+  html.gym-theme-animating input,
+  html.gym-theme-animating select,
+  html.gym-theme-animating .nav-link{
+    transition-property:background-color,color,border-color,box-shadow,fill!important;
+    transition-duration:280ms!important;
+    transition-timing-function:ease-in-out!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:0.01ms!important}
+}
+
+/* Google Material-inspired shape system: consistent soft, rounded corners. */
+:root{--radius-md:14px;--radius-lg:20px;--radius-xl:26px}
+body.is-admin .data-panel,
+body.is-admin .glass-card,
+body.is-admin .stat-card,
+body.is-admin .item-card-glass,
+body.is-admin .gym-table-wrap,
+body.is-admin .gym-ops-bar,
+body.is-admin .gym-members-controls,
+body.is-admin .gym-mobile-tools-panel{border-radius:var(--radius-lg)!important}
+body.is-admin .nav-link,
+body.is-admin .btn-liquid,
+body.is-admin .logout-btn,
+body.is-admin .theme-toggle-btn,
+body.is-admin .gym-sidebar-tools button,
+body.is-admin .gym-export-menu summary,
+body.is-admin .gym-members-controls select,
+body.is-admin input,
+body.is-admin select{border-radius:var(--radius-md)!important}
+body.is-admin .modal-glass-box,
+body.is-admin .gym-finance-panel{border-radius:var(--radius-xl)!important}
+body.is-admin .gym-plans-grid .item-card-glass{border-radius:var(--radius-lg)!important}
+@media(max-width:900px){body.is-admin .gym-mobile-tools-panel{border-radius:var(--radius-lg)!important}}
+/* Keep the switch itself responsive without animating theme colors independently. */
+body.is-admin .theme-toggle-btn{transition:transform .16s ease!important}
+body.is-admin .theme-toggle-btn:active{transform:scale(.93)}
+
+/* Never expose admin-only export/activity tools in the member portal. */
+#gym-mobile-tools[hidden]{display:none!important}
+body:not(.is-admin) #gym-mobile-tools,body:not(.is-admin) .gym-sidebar-tools{display:none!important}
+
+/* Member desktop portal: scroll the content so payment/CliQ card remains reachable. */
+@media(min-width:901px){
+  body:not(.is-admin) #app-view{
+    height:100dvh;
+    min-height:0;
+    overflow:hidden;
+  }
+  body:not(.is-admin) #member-portal-view{
+    flex:1 1 auto;
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior-y:contain;
+    padding-bottom:32px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--border-glow) transparent;
+  }
+  body:not(.is-admin) #member-portal-view::-webkit-scrollbar{width:8px}
+  body:not(.is-admin) #member-portal-view::-webkit-scrollbar-thumb{background:var(--border-glow);border-radius:10px}
+}

@@ -1,0 +1,13 @@
+{
+  "name": "gym-management-system",
+  "version": "1.0.0",
+  "description": "Professional Full-Stack Gym Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.43.4",
+    "express": "^4.19.2"
+  }
+}
